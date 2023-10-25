@@ -13,7 +13,9 @@ function App() {
         ];
 
     const [board, setBoard] = React.useState(["","","","","","","","",""])
-    let turn = 'X';
+    
+    const [turn, setTurn] = React.useState('X')
+
     let win;
 
     function getWinner() {
@@ -46,7 +48,11 @@ function App() {
 
         setBoard(newBoard)
     
-        turn = turn === 'X' ? 'O' : 'X'
+        let nextTurn = turn === 'X' ? 'O' : 'X'
+
+        setTurn(nextTurn)
+
+        win = getWinner()
     }
 
     return (
@@ -54,7 +60,7 @@ function App() {
 
         <h1>Tic-React-Toe</h1>
 
-        <h2>It's X's turn!</h2>
+        <h2>It's {turn}'s turn!</h2>
         
         <div className="flex-container flex-column">
 
@@ -71,7 +77,7 @@ function App() {
         <button id="reset-button">RESET</button>
 
         </div>
-        
+
         </div>
     )
 }
